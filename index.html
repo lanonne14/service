@@ -1,0 +1,1787 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Nonne — Solutions digitales & Boxings premium</title>
+  <meta name="description"
+    content="Agence digitale spécialisée en Boxing e-commerce, services Documents et formation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --background: 230 35% 5%;
+      --foreground: 210 40% 98%;
+      --card: 230 30% 8%;
+      --muted-foreground: 220 15% 65%;
+      --primary: 250 95% 65%;
+      --primary-foreground: 230 35% 5%;
+      --accent: 280 90% 60%;
+      --border: 230 25% 18%;
+      --input: 230 25% 15%;
+      --radius: 1rem;
+      --gradient-primary: linear-gradient(135deg, hsl(220 100% 60%), hsl(270 90% 60%));
+      --gradient-accent: linear-gradient(135deg, hsl(250 95% 65%), hsl(290 90% 60%));
+      --shadow-glow: 0 0 40px hsl(250 95% 65% / .35);
+      --shadow-neon: 0 0 20px hsl(var(--primary)/.5), 0 0 60px hsl(var(--accent)/.3);
+      --c-colissimo: 28 95% 55%;
+      --c-chronopost: 215 90% 55%;
+      --c-dpd: 0 85% 58%;
+      --c-ups: 30 50% 35%;
+      --c-mondial: 350 85% 55%;
+      --c-relais: 145 65% 50%;
+      --c-dhl: 50 95% 55%;
+      --c-gls: 220 80% 55%;
+      --c-bpost: 0 0% 90%;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      border-color: hsl(var(--border))
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: hsl(var(--foreground));
+      background: hsl(var(--background));
+      background-image:
+        radial-gradient(ellipse 80% 50% at 50% -10%, hsl(250 95% 25%/.35), transparent),
+        radial-gradient(ellipse 60% 40% at 100% 50%, hsl(280 95% 25%/.25), transparent),
+        radial-gradient(ellipse 60% 40% at 0% 80%, hsl(220 100% 25%/.25), transparent);
+      background-attachment: fixed;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none
+    }
+
+    ul {
+      list-style: none
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+      color: inherit
+    }
+
+    .display {
+      font-family: 'Space Grotesk', system-ui, sans-serif
+    }
+
+    .text-gradient {
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent
+    }
+
+    .glass {
+      background: linear-gradient(145deg, hsl(230 30% 12%/.6), hsl(230 30% 8%/.4));
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid hsl(230 30% 25%/.4);
+    }
+
+    .glass-hover {
+      transition: all .4s cubic-bezier(.4, 0, .2, 1)
+    }
+
+    .glass-hover:hover {
+      border-color: hsl(var(--primary)/.5);
+      box-shadow: var(--shadow-neon);
+      transform: translateY(-4px)
+    }
+
+    .grid-pattern {
+      background-image:
+        linear-gradient(hsl(var(--border)/.3) 1px, transparent 1px),
+        linear-gradient(90deg, hsl(var(--border)/.3) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+
+    .glow-primary {
+      box-shadow: var(--shadow-glow)
+    }
+
+    .container {
+      max-width: 80rem;
+      margin: 0 auto;
+      padding: 0 1rem
+    }
+
+    @media(min-width:640px) {
+      .container {
+        padding: 0 1.5rem
+      }
+    }
+
+    @media(min-width:1024px) {
+      .container {
+        padding: 0 2rem
+      }
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0)
+      }
+
+      50% {
+        transform: translateY(-20px)
+      }
+    }
+
+    @keyframes pulse-glow {
+
+      0%,
+      100% {
+        opacity: .6;
+        transform: scale(1)
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.05)
+      }
+    }
+
+    @keyframes fade-up {
+      from {
+        opacity: 0;
+        transform: translateY(20px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    .animate-float {
+      animation: float 6s ease-in-out infinite
+    }
+
+    .animate-pulse-glow {
+      animation: pulse-glow 3s ease-in-out infinite
+    }
+
+    .animate-fade-up {
+      animation: fade-up .6s cubic-bezier(.4, 0, .2, 1) backwards
+    }
+
+    /* Navbar */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50
+    }
+
+    .nav-wrap {
+      margin-top: 1rem
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: .75rem 1rem;
+      border-radius: 1rem
+    }
+
+    @media(min-width:640px) {
+      .nav {
+        padding: .75rem 1.5rem
+      }
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      font-family: 'Space Grotesk';
+      font-weight: 700;
+      font-size: 1.125rem
+    }
+
+    .logo-mark {
+      height: 2rem;
+      width: 2rem;
+      border-radius: .5rem;
+      background: var(--gradient-primary);
+      box-shadow: var(--shadow-glow)
+    }
+
+    .logo-img {
+      height: 2.5rem;
+      width: 2.5rem;
+      border-radius: .5rem;
+      object-fit: cover;
+      box-shadow: var(--shadow-glow)
+    }
+
+    .section-img-wrap {
+      text-align: center;
+      margin: 0 auto 2.5rem;
+      max-width: 700px
+    }
+
+    .section-img-wrap img {
+      width: 100%;
+      border-radius: 1rem;
+      border: 1px solid hsl(var(--border)/.5);
+      object-fit: cover;
+      max-height: 320px
+    }
+
+    .nav-links {
+      display: none;
+      gap: 2rem;
+      align-items: center
+    }
+
+    .nav-links a {
+      font-size: .875rem;
+      color: hsl(var(--muted-foreground));
+      transition: color .2s
+    }
+
+    .nav-links a:hover {
+      color: hsl(var(--foreground))
+    }
+
+    .nav-cta {
+      display: none;
+      padding: .5rem 1rem;
+      border-radius: .75rem;
+      background: var(--gradient-primary);
+      color: hsl(var(--primary-foreground));
+      font-size: .875rem;
+      font-weight: 600;
+      transition: opacity .2s
+    }
+
+    .nav-cta:hover {
+      opacity: .9
+    }
+
+    .nav-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: hsl(var(--foreground));
+      display: flex;
+      padding: .25rem
+    }
+
+    .nav-toggle svg {
+      width: 1.5rem;
+      height: 1.5rem
+    }
+
+    .mobile-menu {
+      display: none;
+      margin-top: .5rem;
+      padding: 1rem;
+      border-radius: 1rem;
+      flex-direction: column;
+      gap: .75rem
+    }
+
+    .mobile-menu.open {
+      display: flex
+    }
+
+    .mobile-menu a {
+      font-size: .875rem;
+      padding: .25rem 0
+    }
+
+    .mobile-menu .nav-cta {
+      display: inline-flex;
+      justify-content: center
+    }
+
+    @media(min-width:768px) {
+
+      .nav-links,
+      .nav-cta {
+        display: flex
+      }
+
+      .nav-toggle {
+        display: none
+      }
+
+      .mobile-menu {
+        display: none !important
+      }
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      padding: 5.5rem 0 4rem;
+      overflow: hidden;
+      text-align: center
+    }
+
+    @media(min-width:640px) {
+      .hero {
+        padding: 7rem 0 5rem
+      }
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      opacity: .4;
+      -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+      mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%)
+    }
+
+    .hero-orb {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      height: 500px;
+      width: 500px;
+      border-radius: 9999px;
+      background: var(--gradient-primary);
+      opacity: .2;
+      filter: blur(60px)
+    }
+
+    .hero-orb-2 {
+      position: absolute;
+      top: 5rem;
+      right: 2.5rem;
+      height: 10rem;
+      width: 10rem;
+      border-radius: 9999px;
+      background: hsl(var(--accent)/.3);
+      filter: blur(60px)
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      border-radius: 9999px;
+      padding: .375rem 1rem;
+      font-size: .75rem;
+      color: hsl(var(--muted-foreground));
+      margin-bottom: 2rem
+    }
+
+    @media(min-width:640px) {
+      .badge {
+        font-size: .875rem
+      }
+    }
+
+    .badge svg {
+      width: .875rem;
+      height: .875rem;
+      color: hsl(var(--primary))
+    }
+
+    h1.hero-title {
+      font-family: 'Space Grotesk';
+      font-size: 2.25rem;
+      font-weight: 700;
+      letter-spacing: -.02em;
+      line-height: 1.05
+    }
+
+    @media(min-width:640px) {
+      h1.hero-title {
+        font-size: 3.75rem
+      }
+    }
+
+    @media(min-width:1024px) {
+      h1.hero-title {
+        font-size: 4.5rem
+      }
+    }
+
+    .hero-sub {
+      margin: 1.5rem auto 0;
+      max-width: 42rem;
+      color: hsl(var(--muted-foreground));
+      font-size: 1rem
+    }
+
+    @media(min-width:640px) {
+      .hero-sub {
+        font-size: 1.125rem
+      }
+    }
+
+    .hero-ctas {
+      margin-top: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem
+    }
+
+    @media(min-width:640px) {
+      .hero-ctas {
+        flex-direction: row
+      }
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .75rem 1.5rem;
+      border-radius: .75rem;
+      background: var(--gradient-primary);
+      color: hsl(var(--primary-foreground));
+      font-weight: 600;
+      box-shadow: var(--shadow-glow);
+      transition: transform .2s;
+      border: none;
+      cursor: pointer
+    }
+
+    .btn-primary:hover {
+      transform: scale(1.05)
+    }
+
+    .btn-primary svg {
+      width: 1rem;
+      height: 1rem;
+      transition: transform .2s
+    }
+
+    .btn-primary:hover svg {
+      transform: translateX(.25rem)
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .75rem 1.5rem;
+      border-radius: .75rem;
+      font-weight: 600
+    }
+
+    .stats {
+      margin-top: 5rem;
+      display: inline-grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      max-width: 48rem;
+    }
+
+    @media(min-width:640px) {
+      .stats {
+        gap: 2rem
+      }
+    }
+
+    .stat {
+      padding: 1rem;
+      border-radius: 1rem;
+      text-align: center
+    }
+
+    @media(min-width:640px) {
+      .stat {
+        padding: 1.5rem
+      }
+    }
+
+    .stat-k {
+      font-family: 'Space Grotesk';
+      font-size: 1.5rem;
+      font-weight: 700
+    }
+
+    @media(min-width:640px) {
+      .stat-k {
+        font-size: 2.25rem
+      }
+    }
+
+    .stat-v {
+      font-size: .75rem;
+      color: hsl(var(--muted-foreground));
+      margin-top: .25rem
+    }
+
+    @media(min-width:640px) {
+      .stat-v {
+        font-size: .875rem
+      }
+    }
+
+    /* Section */
+    section.block {
+      padding: 5rem 0;
+      position: relative
+    }
+
+    @media(min-width:640px) {
+      section.block {
+        padding: 7rem 0
+      }
+    }
+
+    .section-head {
+      text-align: center;
+      max-width: 42rem;
+      margin: 0 auto 3.5rem
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      border-radius: 9999px;
+      padding: .25rem .75rem;
+      font-size: .75rem;
+      color: hsl(var(--primary));
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      margin-bottom: 1rem
+    }
+
+    h2.section-title {
+      font-family: 'Space Grotesk';
+      font-size: 1.875rem;
+      font-weight: 700;
+      letter-spacing: -.02em
+    }
+
+    @media(min-width:640px) {
+      h2.section-title {
+        font-size: 3rem
+      }
+    }
+
+    .section-sub {
+      margin-top: 1rem;
+      color: hsl(var(--muted-foreground))
+    }
+
+    /* Grids */
+    .grid-cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem
+    }
+
+    @media(min-width:640px) {
+      .grid-cards {
+        grid-template-columns: repeat(2, 1fr)
+      }
+    }
+
+    @media(min-width:1024px) {
+      .grid-cards {
+        grid-template-columns: repeat(3, 1fr)
+      }
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem
+    }
+
+    @media(min-width:768px) {
+      .grid-2 {
+        grid-template-columns: repeat(2, 1fr)
+      }
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem
+    }
+
+    @media(min-width:640px) {
+      .grid-4 {
+        grid-template-columns: repeat(2, 1fr)
+      }
+    }
+
+    @media(min-width:1024px) {
+      .grid-4 {
+        grid-template-columns: repeat(4, 1fr)
+      }
+    }
+
+    /* Carrier card */
+    .card {
+      padding: 1.5rem;
+      border-radius: 1.5rem;
+      position: relative;
+      overflow: hidden
+    }
+
+    @media(min-width:640px) {
+      .card {
+        padding: 1.75rem
+      }
+    }
+
+    .card-glow {
+      position: absolute;
+      top: -5rem;
+      right: -5rem;
+      height: 10rem;
+      width: 10rem;
+      border-radius: 9999px;
+      filter: blur(60px);
+      opacity: .3;
+      transition: opacity .4s
+    }
+
+    .card:hover .card-glow {
+      opacity: .6
+    }
+
+    .card-head {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      margin-bottom: 1.5rem;
+      position: relative
+    }
+
+    .carrier-icon {
+      height: 2.5rem;
+      width: 2.5rem;
+      border-radius: .75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.125rem
+    }
+
+    .carrier-name {
+      font-family: 'Space Grotesk';
+      font-size: 1.25rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .025em
+    }
+
+    .tier {
+      margin-bottom: 1.25rem
+    }
+
+    .tier:last-child {
+      margin-bottom: 0
+    }
+
+    .tier-label {
+      font-size: .6875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      margin-bottom: .5rem
+    }
+
+    .offer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: .875rem;
+      padding: .375rem 0;
+      border-bottom: 1px solid hsl(var(--border)/.4)
+    }
+
+    .offer:last-child {
+      border-bottom: none
+    }
+
+    .offer-name {
+      color: hsl(var(--foreground)/.9)
+    }
+
+    .offer-price {
+      font-weight: 600
+    }
+
+    /* Admin */
+    .admin-card {
+      padding: 1.75rem;
+      border-radius: 1.5rem
+    }
+
+    .admin-head {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      margin-bottom: 1.5rem
+    }
+
+    .admin-icon {
+      height: 3rem;
+      width: 3rem;
+      border-radius: .75rem;
+      background: hsl(var(--accent)/.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      border: 1px solid hsl(var(--primary)/.3)
+    }
+
+    .admin-title {
+      font-family: 'Space Grotesk';
+      font-size: 1.25rem;
+      font-weight: 700
+    }
+
+    .admin-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: .625rem 0;
+      border-bottom: 1px solid hsl(var(--border)/.4);
+      font-size: .875rem
+    }
+
+    .admin-item:last-child {
+      border-bottom: none
+    }
+
+    .admin-price {
+      font-weight: 600;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent
+    }
+
+    /* Formations */
+    .form-card {
+      position: relative;
+      padding: 1.75rem;
+      border-radius: 1.5rem
+    }
+
+    .form-card.highlight {
+      border-color: hsl(var(--primary)/.6)
+    }
+
+    .form-badge {
+      position: absolute;
+      top: -.75rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: inline-flex;
+      align-items: center;
+      gap: .25rem;
+      background: var(--gradient-primary);
+      color: hsl(var(--primary-foreground));
+      font-size: .75rem;
+      font-weight: 600;
+      padding: .25rem .75rem;
+      border-radius: 9999px;
+      box-shadow: var(--shadow-glow)
+    }
+
+    .form-badge svg {
+      width: .75rem;
+      height: .75rem
+    }
+
+    .form-title {
+      font-family: 'Space Grotesk';
+      font-size: 1.125rem;
+      font-weight: 700
+    }
+
+    .form-price {
+      font-family: 'Space Grotesk';
+      font-size: 2.25rem;
+      font-weight: 700;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: block;
+      margin: .5rem 0 1.5rem
+    }
+
+    .form-feat {
+      display: flex;
+      align-items: flex-start;
+      gap: .5rem;
+      font-size: .875rem;
+      color: hsl(var(--muted-foreground));
+      margin-bottom: .625rem
+    }
+
+    .form-feat svg {
+      width: 1rem;
+      height: 1rem;
+      color: hsl(var(--primary));
+      flex-shrink: 0;
+      margin-top: .125rem
+    }
+
+    /* Contact */
+    .contact-card {
+      padding: 2rem;
+      border-radius: 1.5rem;
+      position: relative;
+      overflow: hidden;
+      max-width: 64rem;
+      margin: 0 auto
+    }
+
+    @media(min-width:640px) {
+      .contact-card {
+        padding: 3rem
+      }
+    }
+
+    .contact-glow-1 {
+      position: absolute;
+      top: -8rem;
+      right: -8rem;
+      height: 16rem;
+      width: 16rem;
+      border-radius: 9999px;
+      background: var(--gradient-primary);
+      opacity: .2;
+      filter: blur(60px)
+    }
+
+    .contact-glow-2 {
+      position: absolute;
+      bottom: -8rem;
+      left: -8rem;
+      height: 16rem;
+      width: 16rem;
+      border-radius: 9999px;
+      background: hsl(var(--accent));
+      opacity: .2;
+      filter: blur(60px)
+    }
+
+    .contact-grid {
+      position: relative
+    }
+
+    .contact-grid {
+      max-width: 36rem;
+      margin: 0 auto
+    }
+
+    .channel {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      padding: .75rem 1.25rem;
+      border-radius: .75rem;
+      margin-bottom: .75rem
+    }
+
+    .channel svg {
+      width: 1.25rem;
+      height: 1.25rem
+    }
+
+    .channel.tg svg {
+      color: hsl(var(--primary))
+    }
+
+    .channel.wa svg {
+      color: hsl(var(--accent))
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem
+    }
+
+    input.field,
+    textarea.field {
+      width: 100%;
+      padding: .75rem 1rem;
+      border-radius: .75rem;
+      background: hsl(var(--input)/.6);
+      border: 1px solid hsl(var(--border));
+      outline: none;
+      transition: border-color .2s
+    }
+
+    input.field:focus,
+    textarea.field:focus {
+      border-color: hsl(var(--primary))
+    }
+
+    textarea.field {
+      resize: none
+    }
+
+    .submit {
+      width: 100%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      padding: .75rem 1.5rem;
+      border-radius: .75rem;
+      background: var(--gradient-primary);
+      color: hsl(var(--primary-foreground));
+      font-weight: 600;
+      box-shadow: var(--shadow-glow);
+      border: none;
+      cursor: pointer;
+      transition: transform .2s
+    }
+
+    .submit:hover {
+      transform: scale(1.02)
+    }
+
+    .submit svg {
+      width: 1rem;
+      height: 1rem
+    }
+
+    .footer {
+      text-align: center;
+      font-size: .75rem;
+      color: hsl(var(--muted-foreground));
+      margin-top: 2rem
+    }
+
+    /* ===== VISUAL FX ===== */
+    #particles-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: .55
+    }
+
+    main,
+    .ticker-wrap {
+      position: relative;
+      z-index: 1
+    }
+
+    .spotlight {
+      position: fixed;
+      pointer-events: none;
+      z-index: 0;
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, hsl(250 95% 65%/.07) 0%, transparent 65%);
+      transform: translate(-50%, -50%)
+    }
+
+    .ticker-wrap {
+      width: 100%;
+      overflow: hidden;
+      border-top: 1px solid hsl(var(--primary)/.35);
+      border-bottom: 1px solid hsl(var(--primary)/.35);
+      background: linear-gradient(90deg, hsl(250 95% 65%/.18), hsl(280 90% 60%/.18));
+      height: 2.25rem;
+      display: flex;
+      align-items: center;
+      position: relative;
+      z-index: 1
+    }
+
+    .ticker-track {
+      display: flex;
+      white-space: nowrap;
+      will-change: transform
+    }
+
+    .ticker-item {
+      padding: 0 1rem;
+      font-size: .63rem;
+      font-weight: 600;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: hsl(var(--muted-foreground));
+      flex-shrink: 0;
+      user-select: none
+    }
+
+    .ticker-item .ti-accent {
+      color: hsl(var(--primary));
+      margin-right: .5rem
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .75s cubic-bezier(.4, 0, .2, 1), transform .75s cubic-bezier(.4, 0, .2, 1)
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none
+    }
+
+    @keyframes float-img {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(-.25deg)
+      }
+
+      50% {
+        transform: translateY(-14px) rotate(.25deg)
+      }
+    }
+
+    .section-img-wrap img {
+      animation: float-img 3.5s ease-in-out infinite
+    }
+
+    @keyframes neon-pulse {
+
+      0%,
+      100% {
+        box-shadow: 0 0 8px hsl(var(--primary)/.5), 0 0 20px hsl(var(--primary)/.25)
+      }
+
+      50% {
+        box-shadow: 0 0 22px hsl(var(--primary)/.9), 0 0 55px hsl(var(--primary)/.45), 0 0 90px hsl(var(--accent)/.2)
+      }
+    }
+
+    .form-card.highlight {
+      animation: neon-pulse 2.5s ease-in-out infinite
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container nav-wrap">
+      <div class="nav glass">
+        <div style="display:flex;align-items:center;gap:.75rem">
+          <a href="#" class="logo">
+            <img src="assets/image1.jpg" class="logo-img" alt="La Nonne" />
+            <span class="text-gradient">La Nonne</span>
+          </a>
+          <a href="#contact" class="nav-cta" style="display:inline-flex">Contact</a>
+        </div>
+        <nav class="nav-links">
+          <a href="#Boxing">Boxing</a>
+          <a href="#admin">Documents</a>
+          <a href="#formations">Formations</a>
+        </nav>
+        <button class="nav-toggle" id="navToggle" aria-label="Menu">
+          <svg id="iconMenu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+        </button>
+      </div>
+      <div class="mobile-menu glass" id="mobileMenu">
+        <a href="#Boxing">Boxing</a>
+        <a href="#admin">Documents</a>
+        <a href="#formations">Formations</a>
+        <a href="#contact" class="nav-cta">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-grid grid-pattern"></div>
+      <div class="hero-orb animate-pulse-glow"></div>
+      <div class="hero-orb-2 animate-float"></div>
+      <div class="container" style="position:relative">
+
+        <h1 class="hero-title animate-fade-up" style="animation-delay:.1s; margin-top:2rem">
+          Service de remboursement <br />
+          <span class="text-gradient">boxing, documents et formations</span>
+        </h1>
+        <p class="hero-sub animate-fade-up" style="animation-delay:.2s">
+          Service de refund n°1 en France.
+        </p>
+        <div class="hero-ctas animate-fade-up" style="animation-delay:.3s">
+          <a href="#Boxing" class="btn-primary">
+            Voir les services
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </a>
+          <a href="#contact" class="btn-ghost glass glass-hover">Me contacter</a>
+        </div>
+        <div class="stats animate-fade-up" style="animation-delay:.4s">
+          <div class="stat glass">
+            <div class="stat-k text-gradient">2000+</div>
+            <div class="stat-v">membres satisfaits</div>
+          </div>
+          <div class="stat glass">
+            <div class="stat-k text-gradient">97%</div>
+            <div class="stat-v">de réussite</div>
+          </div>
+          <div class="stat glass">
+            <div class="stat-k text-gradient">24/7</div>
+            <div class="stat-v">accompagnement</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ticker-wrap">
+      <div class="ticker-track" id="ticker-track"></div>
+    </div>
+
+    <section id="Boxing" class="block">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow glass">Boxing</div>
+          <h2 class="section-title">Scans multi-transporteurs</h2>
+          <p class="section-sub">Des scans dédiées pour chaque transporteur — manuel et insider<br>Réalisé sous 24-48h max. Là où la qualité et la rapidité se rejoignent.</p>
+        </div>
+        <div class="section-img-wrap">
+          <img src="assets/image4.jpg" alt="Boxing" />
+        </div>
+        <div class="grid-cards" id="carriers"></div>
+      </div>
+    </section>
+
+    <section id="admin" class="block">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow glass">Documents</div>
+          <h2 class="section-title">Services Documentss</h2>
+          <p class="section-sub">Une assistance documentaire fiable et rapide pour vos démarches.</p>
+        </div>
+        <div class="section-img-wrap">
+          <img src="assets/image3.jpg" alt="Documents" />
+        </div>
+        <div class="grid-2" id="admin-list"></div>
+      </div>
+    </section>
+
+    <section id="formations" class="block">
+      <div class="hero-grid grid-pattern" style="opacity:.2"></div>
+      <div class="container" style="position:relative">
+        <div class="section-head">
+          <div class="eyebrow glass">Formations</div>
+          <h2 class="section-title">Montez en compétences</h2>
+          <p class="section-sub">Des formations pour les débutants qui souhaitent se lancer ou pour les experts qui
+            souhaitent s'enrichir encore plus.</p>
+        </div>
+        <div class="section-img-wrap">
+          <img src="assets/image2.jpg" alt="Formations" />
+        </div>
+        <div class="grid-4" id="formations-list"></div>
+      </div>
+    </section>
+
+    <section id="contact" class="block">
+      <div class="container">
+        <div class="contact-card glass">
+          <div class="contact-glow-1"></div>
+          <div class="contact-glow-2"></div>
+          <div class="contact-grid">
+            <div>
+              <div class="eyebrow glass">Contact</div>
+              <h2 class="section-title" style="line-height:1.1">Mes liens <span class="text-gradient">telegram et
+                  signal</span></h2>
+              <p class="section-sub">Une question, une demande particulière ou un accompagnement sur-mesure ? La Nonne
+                vous répond rapidement.</p>
+              <div style="margin-top:2rem">
+                <a href="https://t.me/LA_NONNE4" target="_blank" rel="noreferrer" class="channel tg glass glass-hover">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path
+                      d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8z" />
+                  </svg>
+                  <div>
+                    <div
+                      style="font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:hsl(var(--muted-foreground))">
+                      Telegram</div>
+                    <span style="font-weight:600">@LA_NONNE4</span>
+                  </div>
+                </a>
+                <a href="https://t.me/+VvG94pDFHIE2NTE0" target="_blank" rel="noreferrer" class="channel tg glass glass-hover">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path
+                      d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8z" />
+                  </svg>
+                  <div>
+                    <div
+                      style="font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:hsl(var(--muted-foreground))">
+                      Chat de discussion</div>
+                    <span style="font-weight:600">Telegram</span>
+                  </div>
+                </a>
+                <a href="https://signal.group/#CjQKIKPb-9xOaG48XyqIMYwMDWqLJqkafXa3cDa7qcDwLPQmEhBsZ_fYZHYZSLd1nY9L85Wb"
+                  target="_blank" rel="noreferrer" class="channel wa glass glass-hover">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
+                    <path d="M8 12h8M12 8l4 4-4 4" />
+                  </svg>
+                  <div>
+                    <div
+                      style="font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:hsl(var(--muted-foreground))">
+                      Canal de secours</div>
+                    <span style="font-weight:600">Signal</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="footer">© <span id="year"></span> La Nonne — Tous droits réservés.</p>
+      </div>
+    </section>
+  </main>
+
+
+  <script>
+    const carriers = [
+      {
+        id: "colissimo",
+        name: "Colissimo",
+        color: "var(--c-colissimo)",
+        emoji: "🟠",
+        tiers: [
+          {
+            label: "INSIDER",
+            offers: [
+              ["Lit dépôt", "45€"],
+              ["Lit transit", "50€"],
+              ["FTID", "50€"],
+              ["RTS simple", "50€"],
+              ["RTS + (endommagé, livré…)", "60€"],
+              ["Scan livré", "45€"]
+            ]
+          },
+          {
+            label: "MANUEL",
+            offers: [
+              ["FTID", "40€"],
+              ["Lit transit", "40€"],
+              ["Reroute", "40€"],
+              ["Reroute + livré", "50€"],
+              ["Fix FTID / scan livré", "30€"],
+              ["Poids personnalisé", "+5€"],
+             ["PDD offerte",""]
+            ]
+          }
+        ]
+      },
+
+      {
+        id: "chronopost",
+        name: "Chronopost",
+        color: "var(--c-chronopost)",
+        emoji: "🔵",
+        tiers: [
+          {
+            label: "INSIDER",
+            offers: [
+              ["Lit dépôt", "45€"],
+              ["Lit transit", "50€"],
+              ["RTS", "50€"],
+              ["RTS endommagé", "60€"]
+            ]
+          },
+          {
+            label: "MANUEL",
+            offers: [
+              ["FTID", "40€"],
+              ["Lit transit", "40€"],
+              ["Reroute", "40€"],
+              ["Reroute + livré", "50€"],
+              ["Fix FTID / scan livré", "30€"],
+              ["Poids personnalisé", "+5€"],
+             ["PDD offerte",""]
+            ]
+          }
+        ]
+      },
+
+      {
+        id: "dpd",
+        name: "DPD",
+        color: "var(--c-dpd)",
+        emoji: "🔴",
+        tiers: [
+          {
+            label: "INSIDER",
+            offers: [
+              ["Lit dépôt", "45€"],
+              ["Lit transit", "60€"],
+              ["RTS", "60€"],
+              ["RTS + (dmg, avisé, livré)", "65€"]
+            ]
+          },
+          {
+            label: "MANUEL",
+            offers: [
+              ["FTID", "40€"],
+              ["Lit transit", "40€"],
+              ["Reroute", "40€"],
+              ["Reroute + livré", "50€"],
+              ["Fix FTID / scan livré", "30€"],
+              ["Poids personnalisé", "+5€"],
+              ["PDD offerte",""]
+            ]
+          }
+        ]
+      },
+
+      {
+        id: "ups",
+        name: "UPS",
+        color: "var(--c-ups)",
+        emoji: "🟤",
+        tiers: [
+          {
+            label: "SCAN MANUEL",
+            offers: [
+              ["Lit dépôt", "30€"],
+              ["Lit transit", "40€"],
+              ["FTID", "40€"]
+            ]
+          },
+          {
+            label: "SCAN INSIDER",
+            offers: [
+              ["Lit dépôt", "40€"],
+              ["Invest Claim", "45€"],
+              ["Scan damage", "50€"],
+              ["RTS damage", "50€"],
+              ["Poids personnalisé", "+5€"],
+              ["PDD offerte",""]
+            ]
+          }
+        ]
+      },
+
+      {
+        id: "mondial",
+        name: "Mondial Relay",
+        color: "var(--c-mondial)",
+        emoji: "🔴",
+        tiers: [
+          {
+            label: "SCAN MANUEL",
+            offers: [
+              ["Lit scan", "30€"],
+              ["Lit transit", "40€"],
+              ["FTID", "40€"],
+              ["FTID QR code", "40€"],
+              ["RTS", "50€"],
+              ["Reroute", "50€"]
+            ]
+          },
+          {
+            label: "SCAN INSIDER",
+            offers: [
+              ["Lit scan insider (ideal AMZ)", "50€"],
+              ["RTS", "50€"],
+              ["Poids personnalisé", "+5€"],
+             ["PDD offerte",""]
+            ]
+          }
+        ]
+      },
+
+      {
+        id: "relais",
+        name: "Relais Colis",
+        color: "var(--c-relais)",
+        emoji: "🟢",
+        tiers: [
+          {
+            label: "MANUEL",
+            offers: [
+              ["FTID", "40€"],
+              ["Lit transit", "40€"],
+              ["Lit scan / dépôt", "35€"],
+              ["Reroute", "40€"]
+            ]
+          },
+          {
+            label: "INSIDER",
+            offers: [
+              ["Lit scan / dépôt", "50€"],
+              ["Lit transit", "60€"],
+              ["RTS", "60€"],
+              ["Poids personnalisé", "+5€"],
+              ["PDD offerte",""]
+            ]
+          }
+        ]
+      },
+
+      {
+        id: "dhl",
+        name: "DHL",
+        color: "var(--c-dhl)",
+        emoji: "🟡",
+        tiers: [
+          {
+            label: "INSIDER",
+            offers: [
+              ["Lit dépôt", "60€"],
+              ["RTS", "60€"]
+            ]
+          },
+          {
+            label: "MANUEL",
+            offers: [
+              ["FTID", "60€"],
+              ["Lit transit", "60€"],
+              ["Lit dépôt", "50€"],
+              ["Poids personnalisé", "+5€"],
+              ["PDD offerte",""]
+            ]
+          }
+        ]
+      },
+
+      {
+        id: "gls",
+        name: "GLS",
+        color: "var(--c-gls)",
+        emoji: "🔵",
+        tiers: [
+          {
+            label: "INSIDER",
+            offers: [
+              ["Lit dépôt", "50€"],
+              ["RTS", "60€"]
+            ]
+          },
+          {
+            label: "MANUEL",
+            offers: [
+              ["FTID", "40€"],
+              ["Lit transit", "40€"],
+              ["Poids personnalisé", "+5€"]
+            ]
+          }
+        ]
+      },
+
+      {
+        id: "bpost",
+        name: "Bpost",
+        color: "var(--c-bpost)",
+        emoji: "⚪️",
+        tiers: [
+          {
+            label: "Offres",
+            offers: [
+              ["Lit dépôt", "40€"],
+              ["Lit transit", "50€"],
+              ["FTID", "50€"],
+              ["Poids personnalisé", "+5€"]
+            ]
+          }
+        ]
+      },
+      {
+        id: "fedex",
+        name: "FedEx",
+        color: "var(--c-fedex)",
+        emoji: "🟣",
+        tiers: [
+          {
+            label: "Offres",
+            offers: [
+              ["Lit transit", "60€"],
+              ["FTID", "60€"],
+              ["Poids personnalisé", "+5€"]
+            ]
+          }
+        ]
+      }
+    ];
+
+    const adminServices = [
+      {
+        title: "PR / RAPPORT DE POLICE",
+        icon: "📑",
+        items: [
+          ["Pr simple FRANCE", "60€"],
+          ["Pr spoof FRANCE", "90€"],
+          ["Pr simple BELGE", "60€"],
+          ["Pr spoof BELGE", "90€"]
+        ]
+      },
+      {
+        title: "Autres documents",
+        icon: "📄",
+        items: [
+          ["CNI ancienne gen sur fond", "15€"],
+          ["PDD / preuve de dépôt", "10€"],
+          ["JDD / justificatif de domicile", "15€"],
+          ["La Poste attestation perte de colis", "15€"],
+          ["Déclaration perte de CNI", "15€"]
+        ]
+      }
+    ];
+
+    const formations = [
+      {
+        title: "FORMATION DÉBUTANTE",
+        price: "300€",
+        highlight: false,
+        features: [
+          "Tous les termes en lien avec le RF bien expliqués et détaillés",
+          "Comment se protéger et éviter de se faire remonter",
+          "Comment et quoi dire au shop en fonction de la tech utilisée",
+          "Accompagnement personnel et conseils sur les premiers RF",
+          "Quelques boutiques offertes pour rentabiliser directement la formation",
+          "Comment éviter de se faire OFM sur Amazon"
+        ]
+      },
+
+      {
+        title: "FORMATION CONFIRMÉE À VIE",
+        price: "800€",
+        highlight: true,
+        features: [
+          "Formation débutante incluse",
+          "Liste de boutiques complète mise à jour avec toutes les techs via service de boxing et PR",
+          "Tech PAYPAL UA / PAYPAL litige incluse",
+          "Chat spécial avec tous les formés pour partager expériences, tests et réussites",
+          "Comment éviter de se faire OFM sur Amazon",
+          "Liste de sites pour fake vente"
+        ]
+      },
+
+      {
+        title: "FORMATION PAYPAL",
+        price: "250€ - 500€",
+        highlight: false,
+        features: [
+          "Paypal Litige : Paypal datant de 3-6 mois, transactions récentes, durée 14 jours (250€)",
+          "Paypal UA : Paypal datant de 3-6 mois, transactions récentes, carte bancaire enregistrée sur le log, durée 24h (500€)"
+        ]
+      },
+
+      {
+        title: "FORMATION FAKE VENTE",
+        price: "250€",
+        highlight: false,
+        features: [
+          "Explication et fonctionnement d’une fake vente (vous ne payez rien à part le scan, le site vous indemnise du montant de la vente)",
+          "Liste de 10 sites pour fake vente (pas besoin d’historique)",
+          "Conseils sur le choix du bon transporteur et du bon montant selon le log Vinted pour maximiser les chances de réussite"
+        ]
+      }
+    ];
+
+    function escapeHtml(s) { return s.replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])) }
+
+    document.getElementById("carriers").innerHTML = carriers.map(c => `
+  <div class="card glass glass-hover">
+    <div class="card-glow" style="background:hsl(${c.color})"></div>
+    <div class="card-head">
+      <div class="carrier-icon" style="background:hsl(${c.color}/.15);border:1px solid hsl(${c.color}/.4)">${c.emoji}</div>
+      <h3 class="carrier-name">${escapeHtml(c.name)}</h3>
+    </div>
+    ${c.tiers.map(t => `
+      <div class="tier">
+        <div class="tier-label" style="color:hsl(${c.color})">${escapeHtml(t.label)}</div>
+        <ul>${t.offers.map(([n, p]) => `<li class="offer"><span class="offer-name">${escapeHtml(n)}</span><span class="offer-price">${escapeHtml(p)}</span></li>`).join("")}</ul>
+      </div>`).join("")}
+  </div>`).join("");
+
+    document.getElementById("admin-list").innerHTML = adminServices.map(s => `
+  <div class="admin-card glass glass-hover">
+    <div class="admin-head">
+      <div class="admin-icon">${s.icon}</div>
+      <h3 class="admin-title">${escapeHtml(s.title)}</h3>
+    </div>
+    <ul>${s.items.map(([n, p]) => `<li class="admin-item"><span>${escapeHtml(n)}</span><span class="admin-price">${escapeHtml(p)}</span></li>`).join("")}</ul>
+  </div>`).join("");
+
+    document.getElementById("formations-list").innerHTML = formations.map(f => `
+  <div class="form-card glass glass-hover ${f.highlight ? "highlight" : ""}">
+    ${f.highlight ? `<div class="form-badge"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg> Populaire</div>` : ""}
+    <h3 class="form-title">${escapeHtml(f.title)}</h3>
+    <span class="form-price">${escapeHtml(f.price)}</span>
+    <ul>${f.features.map(x => `<li class="form-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>${escapeHtml(x)}</span></li>`).join("")}</ul>
+  </div>`).join("");
+
+    const toggle = document.getElementById("navToggle");
+    const menu = document.getElementById("mobileMenu");
+    const iconMenu = document.getElementById("iconMenu");
+    toggle.addEventListener("click", () => {
+      menu.classList.toggle("open");
+      const open = menu.classList.contains("open");
+      iconMenu.innerHTML = open
+        ? '<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>'
+        : '<line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>';
+    });
+    menu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => menu.classList.remove("open")));
+
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // ===== PARTICLES =====
+    (function () {
+      const canvas = document.createElement('canvas');
+      canvas.id = 'particles-canvas';
+      document.body.prepend(canvas);
+      const ctx = canvas.getContext('2d');
+      let W, H;
+      function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight }
+      resize();
+      window.addEventListener('resize', resize);
+      const pts = Array.from({ length: 75 }, () => ({
+        x: Math.random() * window.innerWidth, y: Math.random() * window.innerHeight,
+        vx: (Math.random() - .5) * .28, vy: (Math.random() - .5) * .28,
+        r: Math.random() * 1.4 + .4, a: Math.random() * .45 + .08,
+        hue: Math.random() * 60 + 220
+      }));
+      (function loop() {
+        ctx.clearRect(0, 0, W, H);
+        pts.forEach(p => {
+          p.x += p.vx; p.y += p.vy;
+          if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+          if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+          ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = `hsla(${p.hue},90%,72%,${p.a})`; ctx.fill();
+        });
+        for (let i = 0; i < pts.length; i++)for (let j = i + 1; j < pts.length; j++) {
+          const dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y, d = Math.sqrt(dx * dx + dy * dy);
+          if (d < 115) {
+            ctx.beginPath(); ctx.moveTo(pts[i].x, pts[i].y); ctx.lineTo(pts[j].x, pts[j].y);
+            ctx.strokeStyle = `hsla(250,90%,70%,${.18 * (1 - d / 115)})`; ctx.lineWidth = .5; ctx.stroke();
+          }
+        }
+        requestAnimationFrame(loop);
+      })();
+    })();
+
+    // ===== SPOTLIGHT =====
+    (function () {
+      const sp = document.createElement('div'); sp.className = 'spotlight';
+      document.body.prepend(sp);
+      document.addEventListener('mousemove', e => { sp.style.left = e.clientX + 'px'; sp.style.top = e.clientY + 'px' });
+    })();
+
+    // ===== TICKER =====
+    (function () {
+      const track = document.getElementById('ticker-track');
+      const words = ['La Nonne', 'Remboursement', 'Formation', 'Documents', 'Boxing', '@LA_NONNE4', 'PR', 'Premium', 'DHL', 'Mondial Relay', 'Colissimo', 'Chronopost', 'DPD'];
+      const html = words.map(w => `<span class="ticker-item"><span class="ti-accent">✦</span>${w}</span>`).join('');
+      track.innerHTML = html + html;
+      let pos = 0;
+      (function go() {
+        pos -= .55;
+        const half = track.scrollWidth / 2;
+        if (pos <= -half) pos = 0;
+        track.style.transform = `translateX(${pos}px)`;
+        requestAnimationFrame(go);
+      })();
+    })();
+
+    // ===== SCROLL REVEAL =====
+    (function () {
+      const sel = '.section-head,.card,.admin-card,.form-card,.stat,.section-img-wrap,.contact-card,.channel';
+      const io = new IntersectionObserver(entries => {
+        entries.forEach((e, i) => {
+          if (e.isIntersecting) {
+            setTimeout(() => e.target.classList.add('visible'), i * 60);
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: .1 });
+      document.querySelectorAll(sel).forEach(el => { el.classList.add('reveal'); io.observe(el) });
+    })();
+
+    // ===== STATS COUNTER =====
+    (function () {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (!e.isIntersecting) return;
+          io.unobserve(e.target);
+          const el = e.target, txt = el.textContent;
+          if (txt.includes('/')) return;
+          const num = parseInt(txt.replace(/\D/g, ''));
+          if (isNaN(num)) return;
+          const suffix = txt.replace(/[0-9]/g, '');
+          const t0 = performance.now();
+          (function tick(now) {
+            const p = Math.min((now - t0) / 1600, 1), ease = 1 - Math.pow(1 - p, 3);
+            el.textContent = Math.round(ease * num) + suffix;
+            if (p < 1) requestAnimationFrame(tick);
+          })(t0);
+        });
+      }, { threshold: .6 });
+      document.querySelectorAll('.stat-k').forEach(el => io.observe(el));
+    })();
+
+    // ===== CARD 3D TILT =====
+    (function () {
+      document.querySelectorAll('.card,.form-card,.admin-card').forEach(card => {
+        card.addEventListener('mousemove', e => {
+          const r = card.getBoundingClientRect();
+          const x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+          card.style.transform = `perspective(700px) rotateY(${x * 12}deg) rotateX(${-y * 12}deg) translateY(-4px) scale(1.02)`;
+        });
+        card.addEventListener('mouseleave', () => card.style.transform = '');
+      });
+    })();
+
+    // ===== HERO MOUSE PARALLAX =====
+    (function () {
+      const orb = document.querySelector('.hero-orb'), orb2 = document.querySelector('.hero-orb-2');
+      if (!orb) return;
+      document.addEventListener('mousemove', e => {
+        const dx = (e.clientX - innerWidth / 2) / innerWidth, dy = (e.clientY - innerHeight / 2) / innerHeight;
+        orb.style.transform = `translate(calc(-50% + ${dx * 30}px),calc(-50% + ${dy * 30}px))`;
+        if (orb2) orb2.style.transform = `translate(${-dx * 18}px,${-dy * 18}px)`;
+      });
+    })();
+  </script>
+</body>
+
+</html>
