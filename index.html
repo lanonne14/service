@@ -1220,22 +1220,20 @@
       </div>
     </section>
 
-    <section id="escrow" class="block">
-      <div class="hero-grid grid-pattern" style="opacity:.2"></div>
-      <div class="container" style="position:relative">
+
+   <section id="admin" class="block">
+      <div class="container">
         <div class="section-head">
-          <div class="eyebrow glass">Escrow</div>
-          <h2 class="section-title"> Achetez en toute tranquilité</h2>
-          <p class="section-sub">Passez par mon service d'escrow pour faire des achats ou des ventes entre vous en toute tranquilité.</p>
+          <div class="eyebrow glass">Escrow et exchange</div>
+          <h2 class="section-title">Autres services</h2>
+          <p class="section-sub">Je propose un service escrow pour des achats en toute tranquilité ainsi qu'un service d'exchange.</p>
         </div>
         <div class="section-img-wrap">
-          <img src="assets/image2.jpg" alt="Escrow" />
+          <img src="assets/image3.jpg" alt="autresServices" />
         </div>
-        <div class="grid-4" id="escrow-list"></div>
+        <div class="grid-2" id="autresServices-list"></div>
       </div>
     </section>
-
-   
 
     <section id="contact" class="block">
       <div class="container">
@@ -1622,6 +1620,28 @@
       }
     ];
 
+    const autresServices = [
+      {
+        title: "ESCROW",
+        icon: "💸",
+        items: [
+          ["10% par transaction", ""],
+          ["10€ de frais minimum par transaction peu importe le montant", ""],
+          ["Une fois qu'un paiement est effectué, toutes les ventes sont définitives et aucun remboursement ou annulation ne sera effectué. Je ne peux être tenu responsable des incidents qui pourraient survenir avant, pendant ou après la transaction", ""],
+        ]
+      },
+      {
+        title: "Exchange",
+        icon: "💵",
+        items: [
+          ["Paypal to crypto", "15%"],
+          ["Crypto to PayPal", "10%"],
+          ["Crypto to crypto", "5%"],
+          ["10€ de frais minimum par transaction peu importe le montant", ""],
+        ]
+      }
+    ];
+
     const formations = [
       {
         title: "FORMATION DÉBUTANTE",
@@ -1698,6 +1718,15 @@
   </div>`).join("");
 
     document.getElementById("admin-list").innerHTML = adminServices.map(s => `
+  <div class="admin-card glass glass-hover">
+    <div class="admin-head">
+      <div class="admin-icon">${s.icon}</div>
+      <h3 class="admin-title">${escapeHtml(s.title)}</h3>
+    </div>
+    <ul>${s.items.map(([n, p]) => `<li class="admin-item"><span>${escapeHtml(n)}</span><span class="admin-price">${escapeHtml(p)}</span></li>`).join("")}</ul>
+  </div>`).join("");
+
+  document.getElementById("autresServices-list").innerHTML = autresServices.map(s => `
   <div class="admin-card glass glass-hover">
     <div class="admin-head">
       <div class="admin-icon">${s.icon}</div>
